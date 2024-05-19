@@ -1,4 +1,5 @@
 import { BlogPosts } from 'app/components/posts'
+import { Navbar } from 'app/components/nav'
 
 export const metadata = {
   title: 'Blog',
@@ -8,7 +9,8 @@ export const metadata = {
 export default function Page() {
   return (
     <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">My Blog</h1>
+      <h1 className="font-bold text-2xl pt-32 mb-2 tracking-tighter">My Blog</h1>
+      <Navbar />
       <BlogPosts />
     </section>
   )

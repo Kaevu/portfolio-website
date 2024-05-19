@@ -1,21 +1,28 @@
 import { BlogPosts } from 'app/components/posts'
+import {Navbar} from 'app/components/nav'
 
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        My Portfolio
+      <h1 className="pt-32 mb-2 text-2xl font-bold tracking-tighter">
+        About
       </h1>
+      <Navbar />
       <p className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
+        {`I'm an aspiring software engineer from California, about to graduate from CSU Fresno with a 
+        degree in Computer Science, currently working on personal projects which include a baseball statistics
+         dashboard, a chess engine and a few others. Currently looking for new grad opportunities or opportunities 
+         in CS research.`}
       </p>
-      <div className="my-8">
-        <BlogPosts />
-      </div>
+      <p className="mb-4">
+        {`I have a wide range of personal interests including gardening, chess, baseball, but particularly the Yankees and 
+        sabremetrics, and much more. Outside of those, in CS, I'm interested in back-end development, 
+        cryptography, artificial intelligence and computer security. 
+        `}
+      </p>
+      <p className="mb-4">
+        {`Join me on my ride to becoming more disciplined, pursuing interests and potentially building something meaningful.`}
+      </p>
     </section>
   )
 }
