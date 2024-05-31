@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="mt-10 mb-16">
       <hr className="opacity-20"></hr>
-      <ul className="font-sm justify-center mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
+      <ul className="font-sm justify-center mt-8 flex space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
         <li className="px-2">
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
