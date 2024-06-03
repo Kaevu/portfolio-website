@@ -1,5 +1,4 @@
 'use client';
-
 import { Navbar } from 'app/components/nav'
 import { Line } from 'react-chartjs-2';
 import { Card } from 'app/chess/components/card';
@@ -24,22 +23,13 @@ ChartJS.register(
   Legend
   );
 
-const URL = 'https://api.chess.com/pub/player/carsenkennedy/games/archives'
 
-// Get the links to the games
-const getLinks = async () => {
-  let obj;
-    let jsondata = await fetch(URL);
-    obj = await jsondata.json();
-    console.log(obj);
-    return obj;
-}
 const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
   datasets: [
     {
       label: 'Games Played',
-      data: [12, 19, 3, 5, 2, 3, 9],
+      data: [12, 19, 3, 5, 2, 3, 9,1300,1250,1196,1175,1150],
       fill: false,
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgba(255, 99, 132, 0.2)',

@@ -1,34 +1,123 @@
 
+
 const gamesURL = 'https://api.chess.com/pub/player/carsenkennedy/games/archives'
 
 // Get the links to the games
 const getLinks = async () => {
-  let obj;
     let jsondata = await fetch(gamesURL);
-    obj = await jsondata.json();
+    let obj = await jsondata.json();
     return obj;
 }
-async function getPastYearGameLinks(username: string) {
-    let links: string[] = [];
-    let currentDate = new Date();
 
-    for (let i = 0; i < 12; i++) {
-        // Extract year and month
+
+async function getPastYearGameLinks() {
+    try {
+      let links = await getLinks();
+  
+      // Get current date and initialize variables
+      let currentDate = new Date();
+      let pastYearLinks: string[] = [];
+      
+      for (let i = 0; i < 13; i++) {
         let year = currentDate.getFullYear();
-        let month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Month needs to be in MM format
+        let month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); 
+        pastYearLinks.push(`${year}/${month}`);
+        currentDate.setMonth(currentDate.getMonth() - 1); 
+      }
+  
+      let filteredLinks = links.archives.filter((link) => {
+        let datePart = link.split('/').slice(-2).join('/');
+        return pastYearLinks.includes(datePart);
+      });
+  
+      return filteredLinks;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  interface Game {
+    white: Player;
+    black: Player;
+    time_class: string;
+    end_time: number;
+  }
 
-        // Construct the URL for the current month
-        let url = `https://api.chess.com/pub/player/${username}/games/${year}/${month}`;
-        // Move to the previous month
-        currentDate.setMonth(currentDate.getMonth() - 1);
-        if (await getLinks().then((data) => data[url] !== undefined)) {
-            links.push(url);
+  interface Player {
+    username: string;
+    rating: number;
+  }
+
+  interface TransformedGame {
+    date: string;
+    rating: number;
+    end_time: number;
+  }
+
+    interface GraphableGame {
+        date: string;
+        rating: number;
+    }
+  async function getTypeGames(type: string) {
+    try {
+
+        let GamesELO: TransformedGame[]= [];
+        const gameLinks = await getPastYearGameLinks();
+
+        const games: Game[] = [];
+        for (let i = 0; i < gameLinks.length; i++) {
+            const jsondata = await fetch(gameLinks[i]);
+            const obj = await jsondata.json();
+            games.push(...obj.games);
         }
+        
+        const typeGames = games.filter((game) => game.time_class === type);
+        for (const game of typeGames) {
+            const date = new Date(game.end_time *1000).toLocaleDateString("en-US");
+            if (game.white.username === 'carsenkennedy') {
+                GamesELO.push({ date, rating: game.white.rating, end_time: game.end_time})
+            } else if (game.black.username === 'carsenkennedy'){
+                GamesELO.push({ date, rating: game.black.rating, end_time: game.end_time})
+            }
+        }
+        return GamesELO;
+        }
+    catch (error) {
+        console.log(error);
+        return [];
     }
+}
 
-        return links;
-    }
+function getLastGameOfEachDay(games: TransformedGame[]): { date: string, rating: number,end_time: number }[] {
+    const gamesByDate: { [date: string]: TransformedGame[] } = {};
+  
+    // Group games by date
+    games.forEach(game => {
+      if (!gamesByDate[game.date]) {
+        gamesByDate[game.date] = [];
+      }
+      gamesByDate[game.date].push(game);
+    });
+    console.log(gamesByDate);
+    const lastGames: { date: string, rating: number, end_time: number }[] = [];
+    Object.keys(gamesByDate).map(date => {
+      const gamesOnDate = gamesByDate[date];
+      gamesOnDate.sort((a, b) => b.end_time - a.end_time); // Sort by end_time descending
+      const lastGame = gamesOnDate[0];
+      lastGames.push({ date: lastGame.date, rating: lastGame.rating, end_time: lastGame.end_time});
+    });
+    return lastGames;
+  }
 
+  function transformArray(originalArray: TransformedGame[]): GraphableGame[] {
+    return originalArray.map(obj => ({
+      date: new Date(obj.end_time*1000).toLocaleDateString("en-US"), 
+      rating: obj.rating,
+    }));
+  }
 
-let currentDate = new Date();
-console.log(getPastYearGameLinks('carsenkennedy'));
+(async () => {
+    const type = 'bullet';
+    const ELO = await getTypeGames(type);
+    const last = transformArray(getLastGameOfEachDay(await getTypeGames(type)));
+    console.log(last);
+  })();
