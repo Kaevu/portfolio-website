@@ -10,7 +10,7 @@ const getLinks = async () => {
 }
 
 
-async function getPastYearGameLinks() {
+export async function getPastYearGameLinks() {
     try {
       let links = await getLinks();
   
@@ -35,29 +35,29 @@ async function getPastYearGameLinks() {
       console.log(error);
     }
   }
-  interface Game {
-    white: Player;
-    black: Player;
-    time_class: string;
-    end_time: number;
-  }
+interface Game {
+  white: Player;
+  black: Player;
+  time_class: string;
+  end_time: number;
+}
 
-  interface Player {
-    username: string;
-    rating: number;
-  }
+interface Player {
+  username: string;
+  rating: number;
+}
 
-  interface TransformedGame {
+export interface TransformedGame {
+  date: string;
+  rating: number;
+  end_time: number;
+}
+
+interface GraphableGame {
     date: string;
     rating: number;
-    end_time: number;
-  }
-
-    interface GraphableGame {
-        date: string;
-        rating: number;
-    }
-  async function getTypeGames(type: string) {
+}
+  export async function getTypeGames(type: string) {
     try {
 
         let GamesELO: TransformedGame[]= [];
@@ -87,7 +87,7 @@ async function getPastYearGameLinks() {
     }
 }
 
-function getLastGameOfEachDay(games: TransformedGame[]): { date: string, rating: number,end_time: number }[] {
+export function getLastGameOfEachDay(games: TransformedGame[]): { date: string, rating: number }[] {
     const gamesByDate: { [date: string]: TransformedGame[] } = {};
   
     // Group games by date
@@ -97,7 +97,6 @@ function getLastGameOfEachDay(games: TransformedGame[]): { date: string, rating:
       }
       gamesByDate[game.date].push(game);
     });
-    console.log(gamesByDate);
     const lastGames: { date: string, rating: number, end_time: number }[] = [];
     Object.keys(gamesByDate).map(date => {
       const gamesOnDate = gamesByDate[date];
@@ -105,19 +104,16 @@ function getLastGameOfEachDay(games: TransformedGame[]): { date: string, rating:
       const lastGame = gamesOnDate[0];
       lastGames.push({ date: lastGame.date, rating: lastGame.rating, end_time: lastGame.end_time});
     });
-    return lastGames;
-  }
-
-  function transformArray(originalArray: TransformedGame[]): GraphableGame[] {
-    return originalArray.map(obj => ({
+    return lastGames.map(obj => ({
       date: new Date(obj.end_time*1000).toLocaleDateString("en-US"), 
       rating: obj.rating,
-    }));
+    }));;
   }
 
-(async () => {
-    const type = 'bullet';
-    const ELO = await getTypeGames(type);
-    const last = transformArray(getLastGameOfEachDay(await getTypeGames(type)));
-    console.log(last);
-  })();
+  // export function transformArray(originalArray: TransformedGame[]): GraphableGame[] {
+  //   return originalArray.map(obj => ({
+  //     date: new Date(obj.end_time*1000).toLocaleDateString("en-US"), 
+  //     rating: obj.rating,
+  //   }));
+  // }
+

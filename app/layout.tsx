@@ -52,7 +52,7 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
-      <body className="antialiased max-w-xl mt-8 lg:mx-auto">
+      <body className="antialiased max-w-xl mt-8 lg:mx-auto animate-fadeInUp">
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           {children}
           <Footer />
