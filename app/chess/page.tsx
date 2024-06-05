@@ -73,7 +73,7 @@ interface ChartableData {
   }[];
 }
 
-export const GetData = async () => {
+const GetData = async () => {
   const bullet: BulletData = await fetchData('bullet');
   const blitz: BulletData = await fetchData('blitz');
   const rapid: BulletData = await fetchData('rapid');
