@@ -5,6 +5,7 @@ import { Line } from 'react-chartjs-2';
 import { Card } from 'app/chess/components/card';
 import { useEffect, useState } from 'react';
 import {
+  ChartOptions,
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
@@ -59,7 +60,6 @@ function alignDataWithDates(data: BulletData | undefined, allDates: (string | nu
 interface BulletData {
   dates: string[];
   rating: (number | null)[];
-  // Add other properties as needed
 }
 interface ChartableData {
   labels: string[];
@@ -135,38 +135,50 @@ const GetData = async () => {
   console.log(chartData);
   return {chartData};
 };
-const PleaseWork = async () => {
-  return await GetData();
-}
-
-const customTickFormatter = (value: string | number | Date) => {
-  if (typeof value === 'string') {
-    const dateParts = value.split('/'); // Split the date string into parts
-    if (dateParts.length >= 2) {
-      const month = parseInt(dateParts[0], 10); // Extract and parse the month part
-
-      // Convert the month number to the corresponding month name
-      const monthNames = [
-        'January', 'February', 'March', 'April',
-        'May', 'June', 'July', 'August',
-        'September', 'October', 'November', 'December'
-      ];
-
-      return monthNames[month - 1]; // Return the month name
-    }
-  }
-
-  return value; // If value is not a string or cannot be parsed, return the original value
+const peakData = async () =>{
+  let jsonData = await fetch('https://api.chess.com/pub/player/carsenkennedy/stats');
+  let obj = await jsonData.json();
+  return obj
 };
+// const customTickFormatter = (value: string | number | Date) => {
+//   if (typeof value === 'string') {
+//     const dateParts = value.split('/'); // Split the date string into parts
+//     if (dateParts.length >= 2) {
+//       const month = parseInt(dateParts[0], 10); // Extract and parse the month part
 
+//       // Convert the month number to the corresponding month name
+//       const monthNames = [
+//         'January', 'February', 'March', 'April',
+//         'May', 'June', 'July', 'August',
+//         'September', 'October', 'November', 'December'
+//       ];
 
+//       return monthNames[month - 1]; // Return the month name
+//     }
+//   }
+
+//   return value; // If value is not a string or cannot be parsed, return the original value
+// };
+
+// const options: ChartOptions = {
+//   scales: {
+//     x: {
+//       ticks: {
+//         callback: customTickFormatter,
+//       },
+//     },
+//   },
+// };
 
 export default function Page() {
   const [chartData, setChartData] = useState<ChartableData | undefined>(undefined);
+  const [peak, setPeak] = useState<any | undefined>(undefined);
   
   useEffect(() => {
     const fetchData = async () => {
-      const { chartData } = await PleaseWork();
+      const { chartData } = await GetData();
+      const peak = await peakData();
+      setPeak(peak);
       setChartData(chartData);
     };
 
@@ -185,9 +197,9 @@ export default function Page() {
       <Navbar />
       {chartData && <Line data={chartData} />}
       <div className='flex justify-between pt-8'>
-        <Card title={'Bullet'} stat={550}/>
-        <Card title={'Blitz'} stat={550}/>
-        <Card title={'Rapid'} stat={550}/>
+        <Card title={'Peak Bullet'} stat={peak['chess_bullet']['best']['rating']}/>
+        <Card title={'Peak Blitz'} stat={peak['chess_blitz']['best']['rating']}/>
+        <Card title={'Peak Rapid'} stat={peak['chess_rapid']['best']['rating']}/>
       </div>
       <p className='pt-12'> Note: One of these days I'll take this more seriously and actually study
       until then, I'll keep bashing my head against the wall.
