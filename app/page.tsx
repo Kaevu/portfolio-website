@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <section>
       <h1 className="pt-32 mb-2 text-2xl font-bold tracking-tighter">
-        About
+        Home
       </h1>
       <Navbar />
       <p className="mb-4">
@@ -15,7 +15,7 @@ export default function Page() {
          in CS research.`}
       </p>
       <p className="mb-4">
-        {`I have a wide range of personal interests including gardening, chess, baseball, but particularly the Yankees and 
+        {`I have a wide range of personal interests including reading, chess, baseball, but particularly the Yankees and 
         sabremetrics, and much more. Outside of those, in CS, I'm interested in back-end development, 
         cryptography, artificial intelligence and computer security. 
         `}

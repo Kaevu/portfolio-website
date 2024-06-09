@@ -201,7 +201,7 @@ export default function Page() {
         <Card title={'Peak Blitz'} stat={peak['chess_blitz']['best']['rating']}/>
         <Card title={'Peak Rapid'} stat={peak['chess_rapid']['best']['rating']}/>
       </div>
-      <p className='pt-12'> Note: One of these days I'll take this more seriously and actually study
+      <p className='pt-12 text-gray-400'> Note: One of these days I'll take this more seriously and actually study
       until then, I'll keep bashing my head against the wall.
       </p>
     </section>
