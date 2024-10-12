@@ -1,5 +1,7 @@
 import { BlogPosts } from 'app/components/posts'
 import { Navbar } from 'app/components/nav'
+import duckGif from 'app/images/dancing-duck-danse.gif'
+import Image from 'next/image'
 
 export const metadata = {
   title: 'Blog',
@@ -9,7 +11,12 @@ export const metadata = {
 export default function Page() {
   return (
     <section>
-      <h1 className="font-bold text-2xl pt-32 mb-2 tracking-tighter">My Blog</h1>
+      <div className='flex justify-between items-center mb-4'>
+        <h1 className="text-6xl tracking-tighter">
+          my blog
+        </h1>
+        <Image className='size-32 shadow-lg filter backdrop-blur-sm align' src={duckGif} alt='' />
+      </div>
       <Navbar />
       <BlogPosts />
     </section>

@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Writing an Interpreter in Go",
+        "author": "Thorsten Ball",
+        "type": 1
+    },
+    {
+        "id": 2,
+        "name": "Dive into Deep Learning",
+        "author": "Aston Zhang",
+        "type": 1
+    },
+    {
+        "id": 3,
+        "name": "The Pursuit of Italy",
+        "author": "David Gilmour",
+        "type": 0
+    },
+    {
+        "id": 4,
+        "name": "Cannery Row",
+        "author": "John Steinbeck",
+        "type": 0
+    }
+]

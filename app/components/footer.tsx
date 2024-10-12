@@ -4,10 +4,10 @@ import { MdEmail } from "react-icons/md";
 
 export default function Footer() {
   return (
-    <footer className="mt-10 mb-16">
+    <footer className="mt-10 mb-16 text-xl">
       <hr className="opacity-20"></hr>
       <ul className="font-sm justify-center mt-8 flex space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        <li className="px-2">
+        <li className="pr-2">
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             href="https://github.com/0xYezi"
@@ -16,7 +16,7 @@ export default function Footer() {
           </a>
         </li>
 
-        <li className="flex px-2">
+        <li className="flex pl-2 pr-2">
           <span className="pr-4">-</span>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
@@ -26,7 +26,7 @@ export default function Footer() {
           </a>
           <span className="pl-4">-</span>
         </li>
-        <li className="px-2">
+        <li className="pl-2">
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             href="mailto:email@yezi.dev"
@@ -35,7 +35,7 @@ export default function Footer() {
           </a>
         </li>
       </ul>
-      <p className="flex mt-8 text-neutral-600 dark:text-neutral-300 justify-center">
+      <p className="flex mt-8 justify-center">
         © {new Date().getFullYear()} MIT Licensed
       </p>
     </footer>

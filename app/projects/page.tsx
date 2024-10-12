@@ -1,26 +1,32 @@
 import { Navbar } from 'app/components/nav'
 import Link from 'next/link'
 import { SiGithub } from 'react-icons/si'
-
+import Image from 'next/image'
+import duckGif from 'app/images/dancing-duck-danse.gif'
 
 export default function Page() {
   return (
     <section>
-      <h1 className="font-bold text-2xl pt-32 mb-2 tracking-tighter">Projects</h1>
+      <div className='flex justify-between items-center mb-4'>
+        <h1 className="text-6xl tracking-tighter">
+          projects
+        </h1>
+        <Image className='size-32 shadow-lg filter backdrop-blur-sm align' src={duckGif} alt='' />
+      </div>
       <Navbar />
-        <p className='text-sm text-gray-400'>This is a list of projects that I feel are actually finished, and have bothered to publish: </p>
-        <div className='grid gap-6'>
+        <p className='text-m text-gray-400'>This is a list of projects that I feel are actually finished, and have bothered to publish: </p>
+        <div className='grid gap-6 text-xl'>
             <div className='grid gap-2 mt-6'>
               <div>
-                <h3 className='text-lg font-bold text-gray-50'>Eurosearcher</h3>
+                <h3 className='text-2xl font-bold text-gray-50'>Eurosearcher</h3>
               </div>
               <div className='grid md:grid-cols-2 gap-2'>
                 <div>
-                  <h4 className='text-sm font-medium mb-1 text-gray-400'>Frameworks</h4>
+                  <h4 className='font-medium mb-1 text-gray-400'>Frameworks</h4>
                   <p className='text-gray-400'>React, Flask</p>
                 </div>
                 <div>
-                  <h4 className='text-sm font-medium mb-1 text-gray-400'>Technologies</h4>
+                  <h4 className='font-medium mb-1 text-gray-400'>Technologies</h4>
                   <p className='text-gray-400'>Tailwind CSS, PostgreSQL, AWS Lambda</p>
                 </div>
               </div>
@@ -40,15 +46,15 @@ export default function Page() {
             <hr className='my-1 opacity-20'></hr>
             <div className='grid gap-2 mt-2'>
               <div>
-                <h3 className='text-lg font-bold text-gray-50'>This Website</h3>
+                <h3 className='text-2xl font-bold text-gray-50'>This Website</h3>
               </div>
               <div className='grid md:grid-cols-2 gap-2'>
                 <div>
-                  <h4 className='text-sm font-medium mb-1 text-gray-400'>Frameworks</h4>
+                  <h4 className='font-medium mb-1 text-gray-400'>Frameworks</h4>
                   <p className='text-gray-400'>React, Next.js</p>
                 </div>
                 <div>
-                  <h4 className='text-sm font-medium mb-1 text-gray-400'>Technologies</h4>
+                  <h4 className='font-medium mb-1 text-gray-400'>Technologies</h4>
                   <p className='text-gray-400'>TypeScript, Tailwind CSS, MDX, Vercel</p>
                 </div>
               </div>
@@ -68,15 +74,15 @@ export default function Page() {
             <hr className='my-1 opacity-20'></hr>
             <div className='grid gap-2 mt-2'>
               <div>
-                <h3 className='text-lg font-bold text-gray-50'>Homelab</h3>
+                <h3 className='text-2xl font-bold text-gray-50'>Homelab</h3>
               </div>
               <div className='grid md:grid-cols-2 gap-2'>
                 <div>
-                  <h4 className='text-sm font-medium mb-1 text-gray-400'>Frameworks</h4>
+                  <h4 className='font-medium mb-1 text-gray-400'>Frameworks</h4>
                   <p className='text-gray-400'>N/A</p>
                 </div>
                 <div>
-                  <h4 className='text-sm font-medium mb-1 text-gray-400'>Technologies</h4>
+                  <h4 className='font-medium mb-1 text-gray-400'>Technologies</h4>
                   <p className='text-gray-400'>Proxmox, Docker</p>
                 </div>
               </div>

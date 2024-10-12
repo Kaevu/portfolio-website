@@ -4,6 +4,8 @@ import { Navbar } from 'app/components/nav'
 import { Line } from 'react-chartjs-2';
 import { Card } from 'app/chess/components/card';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import duckGif from 'app/images/dancing-duck-danse.gif'
 import {
   ChartOptions,
   Chart as ChartJS,
@@ -193,7 +195,12 @@ export default function Page() {
   }
   return (
     <section>
-      <h1 className="font-bold text-2xl pt-32 mb-2 tracking-tighter">Chess</h1>
+      <div className='flex justify-between items-center mb-4'>
+        <h1 className="text-6xl tracking-tighter">
+          chess
+        </h1>
+        <Image className='size-32 shadow-lg filter backdrop-blur-sm align' src={duckGif} alt='' />
+      </div>
       <Navbar />
       {chartData && <Line data={chartData} />}
       <div className='flex justify-between pt-8'>

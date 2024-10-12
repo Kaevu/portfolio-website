@@ -3,6 +3,8 @@ import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
 import  { Navbar } from 'app/components/nav'
+import Image from 'next/image'
+import duckGif from 'app/images/dancing-duck-danse.gif'
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -81,12 +83,20 @@ export default function Blog({ params }) {
           }),
         }}
       />
-      <h1 className="title font-semibold text-2xl tracking-tighter">
-        {post.metadata.title}
-      </h1>
+      <div className='flex justify-between items-center mb-4'>
+        <h1 className="text-6xl tracking-tighter">
+          my blog
+        </h1>
+        <Image className='size-32 shadow-lg filter backdrop-blur-sm align' src={duckGif} alt='' />
+      </div>
       <Navbar />
-      <div className="flex justify-between items-center mt-2 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+      <div className="flex justify-between items-center mt-2">
+        <p className="text-2xl">
+          {post.metadata.title}
+        </p>
+      </div>
+      <div className="flex justify-between items-center mt-2">
+        <p className="text-xl text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>

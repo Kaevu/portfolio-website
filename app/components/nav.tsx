@@ -13,11 +13,14 @@ const navItems = {
   '/chess': {
     name: 'chess',
   },
+  '/reading': {
+    name: 'reading',
+  },
 }
 
 export function Navbar() {
   return (
-    <aside className="justify-end -ml-[8px] mb-6 tracking-tight">
+    <aside className="justify-end -ml-[8px] mb-6 tracking-tight text-xl" >
       <div className="lg:sticky lg:top-20">
         <nav
           className="flex flex-row justify-end relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
