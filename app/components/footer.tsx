@@ -4,8 +4,8 @@ import { MdEmail } from "react-icons/md";
 
 export default function Footer() {
   return (
-    <footer className="mt-10 mb-16 text-xl">
-      <hr className="opacity-20"></hr>
+    <footer className="font-[Futura] mt-8 mb-6 text-l">
+      {/* <hr className="opacity-20"></hr> */}
       <ul className="font-sm justify-center mt-8 flex space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
         <li className="pr-2">
           <a
@@ -35,7 +35,7 @@ export default function Footer() {
           </a>
         </li>
       </ul>
-      <p className="flex mt-8 justify-center">
+      <p className="flex mt-4 justify-center">
         © {new Date().getFullYear()} MIT Licensed
       </p>
     </footer>

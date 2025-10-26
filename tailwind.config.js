@@ -2,7 +2,8 @@ module.exports = {
     theme: {
       extend: {
         fontFamily: {
-          custom: ['Josefin', 'sans-serif'], // Add your custom font here
+          heading: ['Bebas','sans-serif'],
+          body:['Futura','sans-serif']
         },
       },
     },

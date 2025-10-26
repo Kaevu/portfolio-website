@@ -4,8 +4,6 @@ import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
 import  { Navbar } from 'app/components/nav'
 import Image from 'next/image'
-import duckGif from 'app/images/dancing-duck-danse.gif'
-
 export async function generateStaticParams() {
   let posts = getBlogPosts()
 
@@ -87,7 +85,7 @@ export default function Blog({ params }) {
         <h1 className="text-6xl tracking-tighter">
           my blog
         </h1>
-        <Image className='size-32 shadow-lg filter backdrop-blur-sm align' src={duckGif} alt='' />
+        <Image className='size-32 shadow-lg filter backdrop-blur-sm align' src='/images/dancing-duck-danse.gif' alt='' width={300} height={300} />
       </div>
       <Navbar />
       <div className="flex justify-between items-center mt-2">

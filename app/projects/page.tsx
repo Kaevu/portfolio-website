@@ -2,16 +2,16 @@ import { Navbar } from 'app/components/nav'
 import Link from 'next/link'
 import { SiGithub } from 'react-icons/si'
 import Image from 'next/image'
-import duckGif from 'app/images/dancing-duck-danse.gif'
+// import duckGif from 'app/images/dancing-duck-danse.gif'
 
 export default function Page() {
   return (
-    <section>
+    <section className='font-[Futura]'>
       <div className='flex justify-between items-center mb-4'>
         <h1 className="text-6xl tracking-tighter">
           projects
         </h1>
-        <Image className='size-32 shadow-lg filter backdrop-blur-sm align' src={duckGif} alt='' />
+        <Image className='size-32 shadow-lg filter backdrop-blur-sm align' src='/images/dancing-duck-danse.gif' alt='' width={300} height={300} />
       </div>
       <Navbar />
         <p className='text-m text-gray-400'>This is a list of projects that I feel are actually finished, and have bothered to publish: </p>
@@ -37,7 +37,7 @@ export default function Page() {
                     <span>View on GitHub</span>
                   </Link>
                   <Link className="inline-flex items-center gap-2 text-gray-400 hover:text-gray-50" href='https://carsenkennedy.github.io/EU4-React/'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
                     <span>Live Demo</span>
                   </Link>
                 </div>
@@ -65,7 +65,7 @@ export default function Page() {
                     <span>View on GitHub</span>
                   </Link>
                   <Link className="inline-flex items-center gap-2 text-gray-400 hover:text-gray-50" href='https://yezi.dev'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
                     <span>Live Demo</span>
                   </Link>
                 </div>

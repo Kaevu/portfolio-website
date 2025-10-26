@@ -1,29 +1,37 @@
 @import 'tailwindcss';
 
-@font-face {
-  font-family: 'Josefin';
-  src: url('fonts/JosefinSans-VariableFont_wght.ttf') format('woff2'),
-       url('fonts/JosefinSans-Italic-VariableFont_wght.ttf') format('woff'); /* If you have multiple formats */
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Bebas';
-  src: url('fonts/BebasNeue-Regular.ttf') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Fira';
-  src: url('fonts/FiraSans-Black.ttf') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'VT232';
-  src: url('fonts/VT323-Regular.ttf') format('woff2');
-  font-weight: normal;
-  font-style: normal;
+@layer base{
+  @font-face {
+    font-family: 'Josefin';
+    src: url('fonts/JosefinSans-VariableFont_wght.ttf') format('woff2'),
+        url('fonts/JosefinSans-Italic-VariableFont_wght.ttf') format('woff'); /* If you have multiple formats */
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Bebas';
+    src: url('fonts/BebasNeue-Regular.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Fira';
+    src: url('fonts/FiraSans-Black.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'VT232';
+    src: url('fonts/VT323-Regular.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Futura';
+    src: url('fonts/FuturaCyrillicBook.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
 }
 
 ::selection {
@@ -62,13 +70,13 @@ body::before {
   width: 100%;
   height: 100%;
   pointer-events: none; /* Allow interaction with content below */
-  background: repeating-linear-gradient(
+  /* background: repeating-linear-gradient(
     0deg,
     rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.5) 2px,
+    rgba(0, 0, 0, 0.5) 0px,
     transparent 2px,
     transparent 3px
-  );
+  ); */
   z-index: 9999; /* Very high to ensure it’s above everything */
 }
 
@@ -77,10 +85,10 @@ body {
   z-index: 1; /* Ensure the content is under the lines */
 }
 
-html {
-  min-width: 480px;
-  font-family:'VT232';
-  } 
+.wide-layout {
+  max-width: none;
+  width: 100%;
+}
 
 .prose .anchor {
   @apply absolute invisible no-underline;

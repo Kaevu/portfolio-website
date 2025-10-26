@@ -5,7 +5,7 @@ import { Line } from 'react-chartjs-2';
 import { Card } from 'app/chess/components/card';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import duckGif from 'app/images/dancing-duck-danse.gif'
+// import duckGif from '/images/dancing-duck-danse.gif'
 import {
   ChartOptions,
   Chart as ChartJS,
@@ -199,7 +199,7 @@ export default function Page() {
         <h1 className="text-6xl tracking-tighter">
           chess
         </h1>
-        <Image className='size-32 shadow-lg filter backdrop-blur-sm align' src={duckGif} alt='' />
+        <Image className='size-32 shadow-lg filter backdrop-blur-sm align' src='/images/dancing-duck-danse.gif' alt='' width={300} height={300} />
       </div>
       <Navbar />
       {chartData && <Line data={chartData} />}
